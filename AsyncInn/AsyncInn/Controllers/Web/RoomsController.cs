@@ -22,7 +22,7 @@ namespace AsyncInn.Controllers.Web
     // GET: Rooms
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Rooms.ToListAsync());
+      return View(await _context.Rooms.Include(r => r.RoomAmenities).ToListAsync());
     }
 
     // GET: Rooms/Details/5
@@ -40,7 +40,7 @@ namespace AsyncInn.Controllers.Web
         return NotFound();
       }
 
-      return View(room);
+      return View(await _context.Rooms.Where(r => r.Id == id).Include(r => r.RoomAmenities).ToListAsync());
     }
 
     // GET: Rooms/Create
@@ -58,6 +58,7 @@ namespace AsyncInn.Controllers.Web
     {
       if (ModelState.IsValid)
       {
+        // when we create a new room, we also need to create a new HotelRoom object, so we need to know what hotel this room is in...
         _context.Add(room);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -167,13 +168,25 @@ namespace AsyncInn.Controllers.Web
       var inputRoom = _context.Rooms.Where(room => room.Id == roomId).FirstOrDefault();
       // rn, room doesn't have a property to contain amenities...
       // but when we do, we need to use the input Id to add it to the room
-      //if (ModelState.IsValid)
-      //{
-      //  _context.Add(room);
-      //  await _context.SaveChangesAsync();
-      //  return RedirectToAction(nameof(Index));
-      //}
-      // return to home when done
+      if (ModelState.IsValid)
+      {
+        try
+        {
+          // new room amenties object with ref roomID and amentityID
+          RoomAmenities newRoomAmenities = new RoomAmenities {RoomID=roomId, AmenitiesID=amenityId };
+          // add roomAmenities to room list
+          inputRoom.RoomAmenities.Add(newRoomAmenities);
+          _context.Entry(newRoomAmenities).State = EntityState.Added;
+          // EntityState.Deleted to remove, then save
+          // save to db
+          await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+          Console.WriteLine(ex.ToString());
+        }
+      }
+      // redirect
       return RedirectToAction(nameof(Index));
     }
 
@@ -186,13 +199,25 @@ namespace AsyncInn.Controllers.Web
       var inputRoom = _context.Rooms.Where(room => room.Id == roomId).FirstOrDefault();
       // rn, room doesn't have a property to contain amenities...
       // but when we do, we need to use the input Id to remove the given amenityId
-      //if (ModelState.IsValid)
-      //{
-      //  _context.Add(room);
-      //  await _context.SaveChangesAsync();
-      //  return RedirectToAction(nameof(Index));
-      //}
-      // redirect to home after
+      if (ModelState.IsValid)
+      {
+        try
+        {
+          // new room amenties object with ref roomID and amentityID
+          RoomAmenities newRoomAmenities = new RoomAmenities { RoomID = roomId, AmenitiesID = amenityId };
+          // remove roomAmenities to room list
+          inputRoom.RoomAmenities.Remove(newRoomAmenities);
+          _context.Entry(newRoomAmenities).State = EntityState.Deleted;
+          // EntityState.Deleted to remove, then save
+          // save to db
+          await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+          Console.WriteLine(ex.ToString());
+        }
+      }
+      // redirect
       return RedirectToAction(nameof(Index));
     }
   }

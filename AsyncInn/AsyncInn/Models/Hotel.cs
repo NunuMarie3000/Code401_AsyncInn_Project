@@ -15,6 +15,6 @@ namespace AsyncInn.Models
     // i'm assuming these will be the Navigation properties
     // will add HotelRoom
     //[ForeignKey("HotelRoom")]
-    public ICollection<HotelRoom> HotelRoom { get; set; }
+    public List<HotelRoom> HotelRoom { get; set; }
     }
 }

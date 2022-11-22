@@ -10,9 +10,11 @@ namespace AsyncInn.Models
     // i'm assuming these will be the Navigation properties
     // Amenities
     //[ForeignKey("Amenity")]
-    public ICollection<Amenity> Amenities { get; set; }
+    //public List<Amenity> Amenities { get; set; } = new List<Amenity>();
     // Room
     //[ForeignKey("Room")]
     //public Room TheRoom { get; set; }
+    //[ForeignKey("RoomAmenities")]
+    public List<RoomAmenities> RoomAmenities { get; set; }
   }
 }

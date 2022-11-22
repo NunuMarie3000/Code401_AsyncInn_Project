@@ -16,5 +16,10 @@ namespace AsyncInn.Models
     [ForeignKey("Room")]
     public int RoomID { get; set; }
     public Room Room { get; set; }
+
+        public static implicit operator List<object>( HotelRoom v )
+        {
+            throw new NotImplementedException();
+        }
     }
 }

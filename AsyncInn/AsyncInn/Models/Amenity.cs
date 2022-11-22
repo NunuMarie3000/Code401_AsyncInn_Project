@@ -7,7 +7,7 @@ namespace AsyncInn.Models
     public int Id { get; set; }
     public string Name { get; set; }
     // Navigation properties probably
-    // RoomAmenities
+    public List<RoomAmenities> RoomAmenities { get; set; }
 
     }
 }
