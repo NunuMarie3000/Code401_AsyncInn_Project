@@ -16,8 +16,9 @@ namespace AsyncInn.Models
       public string State { get; set; }
       public string Country { get; set; }
       public string Phone { get; set; }
+      public List<HotelRoomDTO> Rooms { get; set; } = new List<HotelRoomDTO>();
     }
-    public class HotelRoom
+    public class HotelRoomDTO
     {
       public int RoomNumber { get; set; }
       public decimal Rate { get; set; }
@@ -25,9 +26,9 @@ namespace AsyncInn.Models
 
       public Hotel Hotel { get; set; }
       public Room Room { get; set; }
-
+      public List<Room> room { get; set; } = new List<Room>();
     }
-    public class Room
+    public class RoomDTO
     {
       public string Name { get; set; }
       public int Layout { get; set; }

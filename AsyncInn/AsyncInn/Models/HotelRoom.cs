@@ -17,9 +17,10 @@ namespace AsyncInn.Models
     public int RoomID { get; set; }
     public Room Room { get; set; }
 
-        public static implicit operator List<object>( HotelRoom v )
-        {
-            throw new NotImplementedException();
-        }
+    // idk what this is? it was here when i came back...
+        //public static implicit operator List<object>( HotelRoom v )
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
