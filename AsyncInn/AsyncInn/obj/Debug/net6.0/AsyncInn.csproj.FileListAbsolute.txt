@@ -300,3 +300,8 @@ C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\b
 C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\NSwag.Generation.AspNetCore.dll
 C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\YamlDotNet.dll
 C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\obj\Debug\net6.0\AsyncInn.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\vmari\source\repos\Code401\Code401_AsyncInn_Project\AsyncInn\AsyncInn\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

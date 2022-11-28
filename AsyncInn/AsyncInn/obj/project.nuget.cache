@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fGUspVrpb2O1ODt256wwaHuoTpbI9Fz+Qln1sZpS3bdhQMhmFLubS4w29D5hNEWkvnpiw0qmn19fsWcehD3tpQ==",
+  "dgSpecHash": "zK9tqwBMWSjcHI/UhuiECjHAh10x+w0bGEX2smBjKpBa1dKfZSBKX7vkc7RCusReN29H8JZg5cCePcufAtZQjg==",
   "success": true,
   "projectFilePath": "C:\\Users\\vmari\\source\\repos\\Code401\\Code401_AsyncInn_Project\\AsyncInn\\AsyncInn\\AsyncInn.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,9 @@
     "C:\\Users\\vmari\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",
+    "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.11\\microsoft.aspnetcore.cryptography.keyderivation.6.0.11.nupkg.sha512",
+    "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.11.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.11\\microsoft.aspnetcore.jsonpatch.6.0.11.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.11\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.11.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
@@ -52,6 +55,8 @@
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.dependencymodel\\7.0.0\\microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\6.0.0\\microsoft.extensions.fileproviders.embedded.6.0.0.nupkg.sha512",
+    "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.11\\microsoft.extensions.identity.core.6.0.11.nupkg.sha512",
+    "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.11\\microsoft.extensions.identity.stores.6.0.11.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\vmari\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
