@@ -23,6 +23,8 @@ namespace AsyncInn.Data
       Amenity AirConditioning = new Amenity { Id = 51, Name = "Air Conditioning" };
       Amenity OceanView = new Amenity { Id = 52, Name = "Ocean View" };
       Amenity MiniBar = new Amenity { Id = 53, Name = "Mini Bar" };
+      Amenity Safe = new Amenity { Id = 54, Name = "Safe" };
+      Amenity Heating = new Amenity { Id = 55, Name = "Heating" };
 
 
       Hotel TheNemo = new Hotel { Id = 100, StreetAddress = "P.Sherman 42", City = "Wallaby Way", State = "Sydney", Name = "The Nemo", Phone = "555-555-5555", Country = "Australia" };
@@ -41,6 +43,8 @@ namespace AsyncInn.Data
       RoomAmenities ra1 = new RoomAmenities { AmenitiesID = AirConditioning.Id, RoomID = TheButt.Id, Id = 71 };
       RoomAmenities ra2 = new RoomAmenities { AmenitiesID = MiniBar.Id, Id = 72, RoomID = TheAmericanIdiot.Id };
       RoomAmenities ra3 = new RoomAmenities { AmenitiesID = OceanView.Id, RoomID = TheGlobe.Id, Id = 73 };
+      RoomAmenities ra4 = new RoomAmenities { AmenitiesID = Safe.Id, RoomID = TheAmericanIdiot.Id, Id = 74 };
+      RoomAmenities ra5 = new RoomAmenities { AmenitiesID = Heating.Id, RoomID = TheGlobe.Id, Id = 75 };
 
       modelBuilder.Entity<Hotel>().HasData(TheNemo);
       modelBuilder.Entity<Hotel>().HasData(TheGreenDay);
@@ -49,6 +53,8 @@ namespace AsyncInn.Data
       modelBuilder.Entity<Amenity>().HasData(AirConditioning);
       modelBuilder.Entity<Amenity>().HasData(OceanView);
       modelBuilder.Entity<Amenity>().HasData(MiniBar);
+      modelBuilder.Entity<Amenity>().HasData(Safe);
+      modelBuilder.Entity<Amenity>().HasData(Heating);
 
       modelBuilder.Entity<Room>().HasData(TheButt);
       modelBuilder.Entity<Room>().HasData(TheAmericanIdiot);
@@ -57,6 +63,8 @@ namespace AsyncInn.Data
       modelBuilder.Entity<RoomAmenities>().HasData(ra1);
       modelBuilder.Entity<RoomAmenities>().HasData(ra2);
       modelBuilder.Entity<RoomAmenities>().HasData(ra3);
+      modelBuilder.Entity<RoomAmenities>().HasData(ra4);
+      modelBuilder.Entity<RoomAmenities>().HasData(ra5);
 
       modelBuilder.Entity<HotelRoom>().HasData(Room001);
       modelBuilder.Entity<HotelRoom>().HasData(Room002);

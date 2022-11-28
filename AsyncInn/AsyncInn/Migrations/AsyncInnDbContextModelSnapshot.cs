@@ -52,6 +52,16 @@ namespace AsyncInn.Migrations
                         {
                             Id = 53,
                             Name = "Mini Bar"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Name = "Safe"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Name = "Heating"
                         });
                 });
 
@@ -264,6 +274,18 @@ namespace AsyncInn.Migrations
                         {
                             Id = 73,
                             AmenitiesID = 52,
+                            RoomID = 301
+                        },
+                        new
+                        {
+                            Id = 74,
+                            AmenitiesID = 54,
+                            RoomID = 201
+                        },
+                        new
+                        {
+                            Id = 75,
+                            AmenitiesID = 55,
                             RoomID = 301
                         });
                 });

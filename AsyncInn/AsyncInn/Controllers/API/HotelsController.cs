@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
+using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace AsyncInn.Controllers.API
 {
@@ -23,22 +26,43 @@ namespace AsyncInn.Controllers.API
 
     // GET: api/Hotels
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
+    public async Task<ActionResult<IEnumerable<ModelsDTO.DTOHotel>>> GetHotels()
     {
-      return await _context.Hotels.ToListAsync();
+      var hotels = await _context.Hotels.ToListAsync();
+      //var hotelRooms = await _context.HotelRoom.Include(hr => hr.Room.RoomAmenities).ThenInclude(ra => ra.Amenities)..ToListAsync();
+      List<ModelsDTO.DTOHotel> allHotels = new List<ModelsDTO.DTOHotel>();
+      foreach (var hotel in hotels)
+      {
+        var associatedHotelRooms = await _context.HotelRoom.Where(hr => hr.HotelID == hotel.Id).Include(r => r.Room).ThenInclude(am=> am.RoomAmenities).ThenInclude(a => a.Amenities).ToListAsync();
+
+        ModelsDTO.DTOHotel hoteldto = new() { Id=hotel.Id, City = hotel.City, Country = hotel.Country, Name = hotel.Name, Phone = hotel.Phone, State = hotel.State, StreetAddress = hotel.StreetAddress };
+        allHotels.Add(hoteldto);
+
+        foreach (var hr in associatedHotelRooms)
+        {
+          ModelsDTO.DTOHotelRoom newHr = new() { PetFriendly = hr.PetFriendly, Rate = hr.Rate, RoomNumber = hr.RoomNumber, Id = hr.Id };
+          hoteldto.HotelRooms.Add(newHr);
+
+          foreach (var am in hr.Room.RoomAmenities)
+          {
+            ModelsDTO.DTOAmenity newAmenity = new() {Name = am.Amenities.Name };
+            newHr.RoomAmenities.Add(newAmenity);
+          }
+        }
+      }
+      return allHotels;
     }
 
     // GET: api/Hotels/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<ModelsDTO.HotelDTO>> GetHotel( int id )
+    public async Task<ActionResult<ModelsDTO.DTOHotel>> GetHotel( int id )
     {
       var hotel = await _context.Hotels.FindAsync(id);
 
       // querying all hotelroom objects associated with the given hotel
-      var hotelrooms = from item in _context.HotelRoom
-                             where item.HotelID == id
-                             select item;
-      
+      // First Include() makes sure it grabs the roomAmenities table and adds it to the data returned to me
+      // ThenIncludes() makes sure each roomAmenities also pulls in the individual amenities objects to me
+      var hotelrooms = await _context.HotelRoom.Where(hr => hr.HotelID == id).Include(hr => hr.Room.RoomAmenities).ThenInclude(ra => ra.Amenities).ToListAsync();
 
       if (hotel == null)
       {
@@ -46,22 +70,25 @@ namespace AsyncInn.Controllers.API
       }
 
       // new hoteldto based on input id
-      ModelsDTO.HotelDTO hoteldto = new ModelsDTO.HotelDTO() { City = hotel.City, Country = hotel.Country, Name = hotel.Name, Phone = hotel.Phone, State = hotel.State, StreetAddress = hotel.StreetAddress };
+      ModelsDTO.DTOHotel hoteldto = new() { City = hotel.City, Country = hotel.Country, Name = hotel.Name, Phone = hotel.Phone, State = hotel.State, StreetAddress = hotel.StreetAddress };
+      // hoteldto has a list of hotelRoom objects
+      // for each item in hotelroomsquery, 
+      // create new hotelroomdto
+      // and add that object to the hoteldto's hotelRoom list
       foreach (var item in hotelrooms)
       {
         // creates new instance of HotelRoomDTO
-        ModelsDTO.HotelRoomDTO newhotelroomdto = new ModelsDTO.HotelRoomDTO() { Hotel = item.Hotel, PetFriendly = item.PetFriendly, Rate = item.Rate, RoomNumber = item.RoomNumber, Room = item.Room };
+        ModelsDTO.DTOHotelRoom newhotelroomdto = new() { HotelId=item.Id, RoomNumber = item.RoomNumber, Rate = item.Rate, PetFriendly = item.PetFriendly, RoomId=item.RoomID,  Id = item.Id };
         // adds new hotelroomdto to the list inside of hoteldto object
-        hoteldto.Rooms.Add(newhotelroomdto);
+        hoteldto.HotelRooms.Add(newhotelroomdto);
 
-        // while i'm here, each hotelroom object has a reference to the room object, which contains a list of roomAmenities objects, i can create dtos for them while i'm here
-        foreach(var i in item.Room.RoomAmenities)
+        //while i'm here, each hotelroom object has a reference to the room object, which contains a list of roomAmenities objects, i can create dtos for them while i'm here
+        foreach (var i in item.Room.RoomAmenities)
         {
-
+          ModelsDTO.DTOAmenity newAmenity = new() { Name = i.Amenities.Name };
+          newhotelroomdto.RoomAmenities.Add(newAmenity);
         }
       }
-
-
       return hoteldto;
     }
 

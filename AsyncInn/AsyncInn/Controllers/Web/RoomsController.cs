@@ -59,6 +59,10 @@ namespace AsyncInn.Controllers.Web
       if (ModelState.IsValid)
       {
         // when we create a new room, we also need to create a new HotelRoom object, so we need to know what hotel this room is in...
+        //_context.Add(room);
+        //await _context.SaveChangesAsync();
+        //return RedirectToAction(nameof(Index));
+
         _context.Add(room);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));

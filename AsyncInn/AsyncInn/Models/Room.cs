@@ -16,5 +16,6 @@ namespace AsyncInn.Models
     //public Room TheRoom { get; set; }
     //[ForeignKey("RoomAmenities")]
     public List<RoomAmenities> RoomAmenities { get; set; }
+    //public List<Amenity> PhysicalListOfAmenities { get; set; }
   }
 }
