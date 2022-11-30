@@ -4,13 +4,13 @@ namespace AsyncInn.Models
 {
   public class IdentityModelsDTO
   {
-    public class LoginDTO
-    {
-      [Required]
-      public string Username { get; set; }
-      [Required]
-      public string Password { get; set; }
-    }
+    //public class LoginDTO
+    //{
+    //  [Required]
+    //  public string Username { get; set; }
+    //  [Required]
+    //  public string Password { get; set; }
+    //}
     public class RegisterDTO
     {
       [Required]
